@@ -10,10 +10,12 @@
 
 @interface FaceNet : NSObject
 
-- (UIImage *)preprocessImage:(UIImage *)face;
+- (instancetype)init;
 
 - (void)xorTest;
 - (void)convTest;
 - (void)faceTest;
+
+- (NSDictionary<NSString *, NSNumber *> *)inferFromImage:(UIImage *)image;
 
 @end

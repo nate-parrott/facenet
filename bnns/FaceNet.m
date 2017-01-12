@@ -10,6 +10,7 @@
 @import Accelerate;
 #import "UIImage+PixelData.h"
 #import "UIImage+Resize.h"
+#import "UIImage+MainFace.h"
 
 // https://github.com/nate-parrott/juypter-notebooks/blob/master/face-attrib-detect.ipynb
 
@@ -27,26 +28,11 @@ FNImageSize FNImageSizeMake(NSInteger height, NSInteger width, NSInteger depth) 
 }
 
 float* FNTranspose2d(NSInteger rows, NSInteger cols, float* input) {
-    // for a fully connected net, rows is the input size and cols is the output size
-    // void vDSP_mtrans(const float *__A, vDSP_Stride __IA, float *__C, vDSP_Stride __IC, vDSP_Length __M, vDSP_Length __N);
     float *output = malloc(cols * rows * sizeof(float));
     vDSP_mtrans(input, 1, output, 1, cols, rows);
     free(input);
     return output;
 }
-
-//float* FNTransposeConvolutionWeights(NSInteger rows, NSInteger cols, NSInteger channels, float* input){
-//    float *output = malloc(cols * rows * channels * sizeof(float));
-//    for (NSInteger row=0; row<rows; row++) {
-//        for (NSInteger col=0; col<cols; col++) {
-//            for (NSInteger channel=0; channel<channels; channel++) {
-//                output[channel * (rows * cols) + col * rows + row] = input[row * (cols * channels) + col * channels + channel];
-//            }
-//        }
-//    }
-//    free(input);
-//    return output;
-//}
 
 BNNSImageStackDescriptor FNImageSizeToStackDescriptor(FNImageSize size) {
     BNNSImageStackDescriptor desc;
@@ -368,9 +354,9 @@ typedef enum {
 
 
 
-@interface FaceNet () {
-    
-}
+@interface FaceNet ()
+
+@property (nonatomic) FNLayerChain *chain;
 
 @end
 
@@ -378,6 +364,47 @@ typedef enum {
 
 - (instancetype)init {
     self = [super init];
+    
+    /*
+     image = tf.image.resize_bilinear(image, [64, 64])
+     for i, size in enumerate([16, 32, 64, 64]):
+     key = 'conv' + str(i)
+     image = create_conv(image, size, patch_size=5, key=key)
+     image = create_avg_pool(image)
+     # now we have a 4x4x64 image:
+     image = create_dropout(image)
+     image = create_fc(flatten_tensor(image), 256, key='fc1')
+     image = create_fc(image, 256, key='fc2')
+     return create_fc(image, len(keys), relu=False, key='fc3')
+     */
+    
+    FNTransposeLayer *transpose0 = [[FNTransposeLayer alloc] initWithMode:FNTransposeModeInterleavedImageToStack imageSize:FNImageSizeMake(64, 64, 3)];
+    
+    FNPerImageStandardizationLayer *standardization = [[FNPerImageStandardizationLayer alloc] initWithSize:FNImageSizeMake(64, 64, 3)];
+    
+    FNConvolutionalLayer *conv0 = [[FNConvolutionalLayer alloc] initConvolutionalWithFilterSize:5 weightName:@"conv0.w.5_5_3_16" biasName:@"conv0.b.16" inputSize:FNImageSizeMake(64,64,3) outputSize:FNImageSizeMake(64,64,16) activation:FNActivationRelu];
+    FNPoolingLayer *pool0 = [[FNPoolingLayer alloc] initWithImageSize:FNImageSizeMake(64, 64, 16) poolingType:BNNSPoolingFunctionAverage kernelSizeAndStride:2];
+    
+    FNConvolutionalLayer *conv1 = [[FNConvolutionalLayer alloc] initConvolutionalWithFilterSize:5 weightName:@"conv1.w.5_5_16_32" biasName:@"conv1.b.32" inputSize:FNImageSizeMake(32,32,16) outputSize:FNImageSizeMake(32,32,32) activation:FNActivationRelu];
+    FNPoolingLayer *pool1 = [[FNPoolingLayer alloc] initWithImageSize:FNImageSizeMake(32, 32, 32) poolingType:BNNSPoolingFunctionAverage kernelSizeAndStride:2];
+    
+    FNConvolutionalLayer *conv2 = [[FNConvolutionalLayer alloc] initConvolutionalWithFilterSize:5 weightName:@"conv2.w.5_5_32_64" biasName:@"conv2.b.64" inputSize:FNImageSizeMake(16,16,32) outputSize:FNImageSizeMake(16,16,64) activation:FNActivationRelu];
+    FNPoolingLayer *pool2 = [[FNPoolingLayer alloc] initWithImageSize:FNImageSizeMake(16, 16, 64) poolingType:BNNSPoolingFunctionAverage kernelSizeAndStride:2];
+    
+    FNConvolutionalLayer *conv3 = [[FNConvolutionalLayer alloc] initConvolutionalWithFilterSize:5 weightName:@"conv3.w.5_5_64_64" biasName:@"conv3.b.64" inputSize:FNImageSizeMake(8,8,64) outputSize:FNImageSizeMake(8,8,64) activation:FNActivationRelu];
+    FNPoolingLayer *pool3 = [[FNPoolingLayer alloc] initWithImageSize:FNImageSizeMake(8, 8, 64) poolingType:BNNSPoolingFunctionAverage kernelSizeAndStride:2];
+    
+    FNTransposeLayer *transpose1 = [[FNTransposeLayer alloc] initWithMode:FNTransposeModeImageStackToInterleaved imageSize:FNImageSizeMake(4, 4, 64)];
+    
+    FNFullyConnectedLayer *fc1 = [[FNFullyConnectedLayer alloc] initFullyConnectedWithInputSize:4*4*64 outputSize:256 activation:FNActivationRelu weightName:@"fc1.w.1024_256" biasName:@"fc1.b.256"];
+    
+    FNFullyConnectedLayer *fc2 = [[FNFullyConnectedLayer alloc] initFullyConnectedWithInputSize:256 outputSize:256 activation:FNActivationRelu weightName:@"fc2.w.256_256" biasName:@"fc2.b.256"];
+    
+    FNFullyConnectedLayer *fc3 = [[FNFullyConnectedLayer alloc] initFullyConnectedWithInputSize:256 outputSize:40 activation:FNActivationSigmoid weightName:@"fc3.w.256_40" biasName:@"fc3.b.40"];
+    
+    FNLayerChain *chain = [[FNLayerChain alloc] initWithLayers:@[transpose0, standardization, conv0, pool0, conv1, pool1, conv2, pool2, conv3, pool3, transpose1, fc1, fc2, fc3] inputCount:64 * 64 * 3];
+    
+    self.chain = chain;
     
     return self;
 }
@@ -463,57 +490,28 @@ typedef enum {
 }
 
 - (void)faceTest {
+    UIImage *face = [[UIImage imageNamed:@"congress"] fn_mainFace];
+    NSDictionary *d = [self inferFromImage:face];
+    for (NSString *key in d) {
+        NSLog(@"%@: %@", key, d[key]);
+    }
+}
+
+- (NSDictionary<NSString *, NSNumber *> *)inferFromImage:(UIImage *)image {
     NSArray *attrs = [@"5_o_Clock_Shadow Arched_Eyebrows Attractive Bags_Under_Eyes Bald Bangs Big_Lips Big_Nose Black_Hair Blond_Hair Blurry Brown_Hair Bushy_Eyebrows Chubby Double_Chin Eyeglasses Goatee Gray_Hair Heavy_Makeup High_Cheekbones Male Mouth_Slightly_Open Mustache Narrow_Eyes No_Beard Oval_Face Pale_Skin Pointy_Nose Receding_Hairline Rosy_Cheeks Sideburns Smiling Straight_Hair Wavy_Hair Wearing_Earrings Wearing_Hat Wearing_Lipstick Wearing_Necklace Wearing_Necktie Young" componentsSeparatedByString:@" "];
     
-    /*
-     image = tf.image.resize_bilinear(image, [64, 64])
-     for i, size in enumerate([16, 32, 64, 64]):
-         key = 'conv' + str(i)
-         image = create_conv(image, size, patch_size=5, key=key)
-         image = create_avg_pool(image)
-     # now we have a 4x4x64 image:
-     image = create_dropout(image)
-     image = create_fc(flatten_tensor(image), 256, key='fc1')
-     image = create_fc(image, 256, key='fc2')
-     return create_fc(image, len(keys), relu=False, key='fc3')
-     */
+    float *imageArray = [[image atSize:CGSizeMake(64, 64)] floatArray];
+    memcpy([self.chain inputBuffer], imageArray, sizeof(float) * 64 * 64 * 3);
     
-    FNTransposeLayer *transpose0 = [[FNTransposeLayer alloc] initWithMode:FNTransposeModeInterleavedImageToStack imageSize:FNImageSizeMake(64, 64, 3)];
+    float *results = [self.chain run];
     
-    FNPerImageStandardizationLayer *standardization = [[FNPerImageStandardizationLayer alloc] initWithSize:FNImageSizeMake(64, 64, 3)];
+    free(imageArray);
     
-    FNConvolutionalLayer *conv0 = [[FNConvolutionalLayer alloc] initConvolutionalWithFilterSize:5 weightName:@"conv0.w.5_5_3_16" biasName:@"conv0.b.16" inputSize:FNImageSizeMake(64,64,3) outputSize:FNImageSizeMake(64,64,16) activation:FNActivationRelu];
-    FNPoolingLayer *pool0 = [[FNPoolingLayer alloc] initWithImageSize:FNImageSizeMake(64, 64, 16) poolingType:BNNSPoolingFunctionAverage kernelSizeAndStride:2];
-    
-    FNConvolutionalLayer *conv1 = [[FNConvolutionalLayer alloc] initConvolutionalWithFilterSize:5 weightName:@"conv1.w.5_5_16_32" biasName:@"conv1.b.32" inputSize:FNImageSizeMake(32,32,16) outputSize:FNImageSizeMake(32,32,32) activation:FNActivationRelu];
-    FNPoolingLayer *pool1 = [[FNPoolingLayer alloc] initWithImageSize:FNImageSizeMake(32, 32, 32) poolingType:BNNSPoolingFunctionAverage kernelSizeAndStride:2];
-    
-    FNConvolutionalLayer *conv2 = [[FNConvolutionalLayer alloc] initConvolutionalWithFilterSize:5 weightName:@"conv2.w.5_5_32_64" biasName:@"conv2.b.64" inputSize:FNImageSizeMake(16,16,32) outputSize:FNImageSizeMake(16,16,64) activation:FNActivationRelu];
-    FNPoolingLayer *pool2 = [[FNPoolingLayer alloc] initWithImageSize:FNImageSizeMake(16, 16, 64) poolingType:BNNSPoolingFunctionAverage kernelSizeAndStride:2];
-    
-    FNConvolutionalLayer *conv3 = [[FNConvolutionalLayer alloc] initConvolutionalWithFilterSize:5 weightName:@"conv3.w.5_5_64_64" biasName:@"conv3.b.64" inputSize:FNImageSizeMake(8,8,64) outputSize:FNImageSizeMake(8,8,64) activation:FNActivationRelu];
-    FNPoolingLayer *pool3 = [[FNPoolingLayer alloc] initWithImageSize:FNImageSizeMake(8, 8, 64) poolingType:BNNSPoolingFunctionAverage kernelSizeAndStride:2];
-    
-    FNTransposeLayer *transpose1 = [[FNTransposeLayer alloc] initWithMode:FNTransposeModeImageStackToInterleaved imageSize:FNImageSizeMake(4, 4, 64)];
-    
-    FNFullyConnectedLayer *fc1 = [[FNFullyConnectedLayer alloc] initFullyConnectedWithInputSize:4*4*64 outputSize:256 activation:FNActivationRelu weightName:@"fc1.w.1024_256" biasName:@"fc1.b.256"];
-    
-    FNFullyConnectedLayer *fc2 = [[FNFullyConnectedLayer alloc] initFullyConnectedWithInputSize:256 outputSize:256 activation:FNActivationRelu weightName:@"fc2.w.256_256" biasName:@"fc2.b.256"];
-    
-    FNFullyConnectedLayer *fc3 = [[FNFullyConnectedLayer alloc] initFullyConnectedWithInputSize:256 outputSize:40 activation:FNActivationSigmoid weightName:@"fc3.w.256_40" biasName:@"fc3.b.40"];
-    
-    FNLayerChain *chain = [[FNLayerChain alloc] initWithLayers:@[transpose0, standardization, conv0, pool0, conv1, pool1, conv2, pool2, conv3, pool3, transpose1, fc1, fc2, fc3] inputCount:64 * 64 * 3];
-    
-    float *image = [[[UIImage imageNamed:@"example"] atSize:CGSizeMake(64, 64)] floatArray];
-    memcpy([chain inputBuffer], image, sizeof(float) * 64 * 64 * 3);
-    
-    float *results = [chain run];
-    
+    NSMutableDictionary *resultsDict = [NSMutableDictionary new];
     for (NSInteger i=0; i<40; i++) {
-        NSLog(@"%@: %f", attrs[i], results[i]);
+        resultsDict[attrs[i]] = @(results[i]);
     }
-    
-    free(image);
+    return resultsDict;
 }
 
 @end

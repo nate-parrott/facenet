@@ -43,6 +43,12 @@
 		5FCC6FB31E274A0800973AB4 /* fc3.b.40.weight in Resources */ = {isa = PBXBuildFile; fileRef = 5FCC6FA51E274A0800973AB4 /* fc3.b.40.weight */; };
 		5FCC6FB41E274A0800973AB4 /* fc3.w.256_40.weight in Resources */ = {isa = PBXBuildFile; fileRef = 5FCC6FA61E274A0800973AB4 /* fc3.w.256_40.weight */; };
 		5FCC6FB71E27827F00973AB4 /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FCC6FB61E27827F00973AB4 /* UIImage+Resize.m */; };
+		5FCC6FB91E278CCB00973AB4 /* congress.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FCC6FB81E278CCB00973AB4 /* congress.png */; };
+		5FCC6FC01E278CFC00973AB4 /* UIImage+FaceDetection.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FCC6FBB1E278CFC00973AB4 /* UIImage+FaceDetection.m */; };
+		5FCC6FC11E278CFC00973AB4 /* CIFeature+CorrectedBounds.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FCC6FBD1E278CFC00973AB4 /* CIFeature+CorrectedBounds.m */; };
+		5FCC6FC21E278CFC00973AB4 /* UIImage+SubImages.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FCC6FBF1E278CFC00973AB4 /* UIImage+SubImages.m */; };
+		5FCC6FC51E278D3600973AB4 /* UIImage+Normalization.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FCC6FC41E278D3600973AB4 /* UIImage+Normalization.m */; };
+		5FE7F8091E27A67B00A699CD /* UIImage+MainFace.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE7F8081E27A67B00A699CD /* UIImage+MainFace.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -89,6 +95,17 @@
 		5FCC6FA61E274A0800973AB4 /* fc3.w.256_40.weight */ = {isa = PBXFileReference; lastKnownFileType = file; path = fc3.w.256_40.weight; sourceTree = "<group>"; };
 		5FCC6FB51E27827F00973AB4 /* UIImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Resize.h"; sourceTree = "<group>"; };
 		5FCC6FB61E27827F00973AB4 /* UIImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Resize.m"; sourceTree = "<group>"; };
+		5FCC6FB81E278CCB00973AB4 /* congress.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = congress.png; sourceTree = "<group>"; };
+		5FCC6FBA1E278CFC00973AB4 /* UIImage+FaceDetection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+FaceDetection.h"; sourceTree = "<group>"; };
+		5FCC6FBB1E278CFC00973AB4 /* UIImage+FaceDetection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+FaceDetection.m"; sourceTree = "<group>"; };
+		5FCC6FBC1E278CFC00973AB4 /* CIFeature+CorrectedBounds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CIFeature+CorrectedBounds.h"; sourceTree = "<group>"; };
+		5FCC6FBD1E278CFC00973AB4 /* CIFeature+CorrectedBounds.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CIFeature+CorrectedBounds.m"; sourceTree = "<group>"; };
+		5FCC6FBE1E278CFC00973AB4 /* UIImage+SubImages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+SubImages.h"; sourceTree = "<group>"; };
+		5FCC6FBF1E278CFC00973AB4 /* UIImage+SubImages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+SubImages.m"; sourceTree = "<group>"; };
+		5FCC6FC31E278D3600973AB4 /* UIImage+Normalization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Normalization.h"; sourceTree = "<group>"; };
+		5FCC6FC41E278D3600973AB4 /* UIImage+Normalization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Normalization.m"; sourceTree = "<group>"; };
+		5FE7F8071E27A67B00A699CD /* UIImage+MainFace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+MainFace.h"; sourceTree = "<group>"; };
+		5FE7F8081E27A67B00A699CD /* UIImage+MainFace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+MainFace.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,10 +145,10 @@
 				5F7B48E51E25534000635DB0 /* example.png */,
 				5F7B48E71E25534A00635DB0 /* FaceNet.h */,
 				5F7B48E81E25534A00635DB0 /* FaceNet.m */,
-				5FCC6F951E273A3500973AB4 /* UIImage+PixelData.h */,
-				5FCC6F961E273A3500973AB4 /* UIImage+PixelData.m */,
-				5FCC6FB51E27827F00973AB4 /* UIImage+Resize.h */,
-				5FCC6FB61E27827F00973AB4 /* UIImage+Resize.m */,
+				5FE7F8071E27A67B00A699CD /* UIImage+MainFace.h */,
+				5FE7F8081E27A67B00A699CD /* UIImage+MainFace.m */,
+				5FCC6FC61E278D3D00973AB4 /* Image utils */,
+				5FCC6FB81E278CCB00973AB4 /* congress.png */,
 				5FCC6F981E274A0800973AB4 /* facenet */,
 				5F7B491B1E266EA400635DB0 /* conv */,
 				5F7B490E1E2648A200635DB0 /* xor */,
@@ -197,6 +214,25 @@
 				5FCC6FA61E274A0800973AB4 /* fc3.w.256_40.weight */,
 			);
 			path = facenet;
+			sourceTree = "<group>";
+		};
+		5FCC6FC61E278D3D00973AB4 /* Image utils */ = {
+			isa = PBXGroup;
+			children = (
+				5FCC6F951E273A3500973AB4 /* UIImage+PixelData.h */,
+				5FCC6F961E273A3500973AB4 /* UIImage+PixelData.m */,
+				5FCC6FB51E27827F00973AB4 /* UIImage+Resize.h */,
+				5FCC6FB61E27827F00973AB4 /* UIImage+Resize.m */,
+				5FCC6FBA1E278CFC00973AB4 /* UIImage+FaceDetection.h */,
+				5FCC6FBB1E278CFC00973AB4 /* UIImage+FaceDetection.m */,
+				5FCC6FBC1E278CFC00973AB4 /* CIFeature+CorrectedBounds.h */,
+				5FCC6FBD1E278CFC00973AB4 /* CIFeature+CorrectedBounds.m */,
+				5FCC6FBE1E278CFC00973AB4 /* UIImage+SubImages.h */,
+				5FCC6FBF1E278CFC00973AB4 /* UIImage+SubImages.m */,
+				5FCC6FC31E278D3600973AB4 /* UIImage+Normalization.h */,
+				5FCC6FC41E278D3600973AB4 /* UIImage+Normalization.m */,
+			);
+			name = "Image utils";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -269,6 +305,7 @@
 				5FCC6FAA1E274A0800973AB4 /* conv1.w.5_5_16_32.weight in Resources */,
 				5F7B49311E26AF0600635DB0 /* conv.fc2.w.weight in Resources */,
 				5FCC6FA91E274A0800973AB4 /* conv1.b.32.weight in Resources */,
+				5FCC6FB91E278CCB00973AB4 /* congress.png in Resources */,
 				5F7B48C21E2552E700635DB0 /* LaunchScreen.storyboard in Resources */,
 				5FCC6FB41E274A0800973AB4 /* fc3.w.256_40.weight in Resources */,
 				5F7B49321E26AF0600635DB0 /* conv.fc3.b.weight in Resources */,
@@ -299,11 +336,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				5FCC6F971E273A3500973AB4 /* UIImage+PixelData.m in Sources */,
+				5FCC6FC21E278CFC00973AB4 /* UIImage+SubImages.m in Sources */,
 				5F7B48BA1E2552E700635DB0 /* ViewController.m in Sources */,
 				5F7B48B71E2552E700635DB0 /* AppDelegate.m in Sources */,
+				5FE7F8091E27A67B00A699CD /* UIImage+MainFace.m in Sources */,
+				5FCC6FC01E278CFC00973AB4 /* UIImage+FaceDetection.m in Sources */,
 				5F7B48E91E25534A00635DB0 /* FaceNet.m in Sources */,
 				5F7B48B41E2552E700635DB0 /* main.m in Sources */,
 				5FCC6FB71E27827F00973AB4 /* UIImage+Resize.m in Sources */,
+				5FCC6FC11E278CFC00973AB4 /* CIFeature+CorrectedBounds.m in Sources */,
+				5FCC6FC51E278D3600973AB4 /* UIImage+Normalization.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
