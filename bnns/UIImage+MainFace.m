@@ -28,8 +28,11 @@
 }
 
 - (UIImage *)fn_cropToFace:(CIFaceFeature *)face {
-    CGRect faceBounds = [face correctedBoundsInImage:self];
-    CGFloat width = faceBounds.size.width / 0.65;
+    return [self fn_cropToFaceInRect:[face correctedBoundsInImage:self]];
+}
+
+- (UIImage *)fn_cropToFaceInRect:(CGRect)faceBounds {
+    CGFloat width = faceBounds.size.width / 0.7;
     CGFloat height = 192.0 / 160.0 * width;
     CGFloat centerX = CGRectGetMidX(faceBounds);
     CGFloat centerY = CGRectGetMidY(faceBounds);

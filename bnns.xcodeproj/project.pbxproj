@@ -49,6 +49,10 @@
 		5FCC6FC21E278CFC00973AB4 /* UIImage+SubImages.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FCC6FBF1E278CFC00973AB4 /* UIImage+SubImages.m */; };
 		5FCC6FC51E278D3600973AB4 /* UIImage+Normalization.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FCC6FC41E278D3600973AB4 /* UIImage+Normalization.m */; };
 		5FE7F8091E27A67B00A699CD /* UIImage+MainFace.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE7F8081E27A67B00A699CD /* UIImage+MainFace.m */; };
+		5FEC31231E29043F001503F6 /* FNCameraView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FEC31221E29043F001503F6 /* FNCameraView.m */; };
+		5FEC31261E29095B001503F6 /* FNFacePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FEC31251E29095B001503F6 /* FNFacePickerViewController.m */; };
+		5FEC31291E2909C7001503F6 /* FNResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FEC31281E2909C7001503F6 /* FNResultsViewController.m */; };
+		5FEC312C1E2913E8001503F6 /* FNCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FEC312B1E2913E8001503F6 /* FNCameraViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -106,6 +110,14 @@
 		5FCC6FC41E278D3600973AB4 /* UIImage+Normalization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Normalization.m"; sourceTree = "<group>"; };
 		5FE7F8071E27A67B00A699CD /* UIImage+MainFace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+MainFace.h"; sourceTree = "<group>"; };
 		5FE7F8081E27A67B00A699CD /* UIImage+MainFace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+MainFace.m"; sourceTree = "<group>"; };
+		5FEC31211E29043F001503F6 /* FNCameraView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNCameraView.h; sourceTree = "<group>"; };
+		5FEC31221E29043F001503F6 /* FNCameraView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNCameraView.m; sourceTree = "<group>"; };
+		5FEC31241E29095B001503F6 /* FNFacePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNFacePickerViewController.h; sourceTree = "<group>"; };
+		5FEC31251E29095B001503F6 /* FNFacePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNFacePickerViewController.m; sourceTree = "<group>"; };
+		5FEC31271E2909C7001503F6 /* FNResultsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNResultsViewController.h; sourceTree = "<group>"; };
+		5FEC31281E2909C7001503F6 /* FNResultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNResultsViewController.m; sourceTree = "<group>"; };
+		5FEC312A1E2913E8001503F6 /* FNCameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNCameraViewController.h; sourceTree = "<group>"; };
+		5FEC312B1E2913E8001503F6 /* FNCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNCameraViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +159,14 @@
 				5F7B48E81E25534A00635DB0 /* FaceNet.m */,
 				5FE7F8071E27A67B00A699CD /* UIImage+MainFace.h */,
 				5FE7F8081E27A67B00A699CD /* UIImage+MainFace.m */,
+				5FEC312A1E2913E8001503F6 /* FNCameraViewController.h */,
+				5FEC312B1E2913E8001503F6 /* FNCameraViewController.m */,
+				5FEC31241E29095B001503F6 /* FNFacePickerViewController.h */,
+				5FEC31251E29095B001503F6 /* FNFacePickerViewController.m */,
+				5FEC31271E2909C7001503F6 /* FNResultsViewController.h */,
+				5FEC31281E2909C7001503F6 /* FNResultsViewController.m */,
+				5FEC31211E29043F001503F6 /* FNCameraView.h */,
+				5FEC31221E29043F001503F6 /* FNCameraView.m */,
 				5FCC6FC61E278D3D00973AB4 /* Image utils */,
 				5FCC6FB81E278CCB00973AB4 /* congress.png */,
 				5FCC6F981E274A0800973AB4 /* facenet */,
@@ -335,7 +355,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5FEC31261E29095B001503F6 /* FNFacePickerViewController.m in Sources */,
 				5FCC6F971E273A3500973AB4 /* UIImage+PixelData.m in Sources */,
+				5FEC31231E29043F001503F6 /* FNCameraView.m in Sources */,
 				5FCC6FC21E278CFC00973AB4 /* UIImage+SubImages.m in Sources */,
 				5F7B48BA1E2552E700635DB0 /* ViewController.m in Sources */,
 				5F7B48B71E2552E700635DB0 /* AppDelegate.m in Sources */,
@@ -346,6 +368,8 @@
 				5FCC6FB71E27827F00973AB4 /* UIImage+Resize.m in Sources */,
 				5FCC6FC11E278CFC00973AB4 /* CIFeature+CorrectedBounds.m in Sources */,
 				5FCC6FC51E278D3600973AB4 /* UIImage+Normalization.m in Sources */,
+				5FEC31291E2909C7001503F6 /* FNResultsViewController.m in Sources */,
+				5FEC312C1E2913E8001503F6 /* FNCameraViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,12 +10,14 @@
 
 @interface FaceNet : NSObject
 
++ (FaceNet *)shared;
+
 - (instancetype)init;
 
 - (void)xorTest;
 - (void)convTest;
 - (void)faceTest;
 
-- (NSDictionary<NSString *, NSNumber *> *)inferFromImage:(UIImage *)image;
+- (NSDictionary<NSString *, NSNumber *> *)attributesForFace:(UIImage *)image;
 
 @end

@@ -491,13 +491,13 @@ typedef enum {
 
 - (void)faceTest {
     UIImage *face = [[UIImage imageNamed:@"congress"] fn_mainFace];
-    NSDictionary *d = [self inferFromImage:face];
+    NSDictionary *d = [self attributesForFace:face];
     for (NSString *key in d) {
         NSLog(@"%@: %@", key, d[key]);
     }
 }
 
-- (NSDictionary<NSString *, NSNumber *> *)inferFromImage:(UIImage *)image {
+- (NSDictionary<NSString *, NSNumber *> *)attributesForFace:(UIImage *)image {
     NSArray *attrs = [@"5_o_Clock_Shadow Arched_Eyebrows Attractive Bags_Under_Eyes Bald Bangs Big_Lips Big_Nose Black_Hair Blond_Hair Blurry Brown_Hair Bushy_Eyebrows Chubby Double_Chin Eyeglasses Goatee Gray_Hair Heavy_Makeup High_Cheekbones Male Mouth_Slightly_Open Mustache Narrow_Eyes No_Beard Oval_Face Pale_Skin Pointy_Nose Receding_Hairline Rosy_Cheeks Sideburns Smiling Straight_Hair Wavy_Hair Wearing_Earrings Wearing_Hat Wearing_Lipstick Wearing_Necklace Wearing_Necktie Young" componentsSeparatedByString:@" "];
     
     float *imageArray = [[image atSize:CGSizeMake(64, 64)] floatArray];
@@ -512,6 +512,15 @@ typedef enum {
         resultsDict[attrs[i]] = @(results[i]);
     }
     return resultsDict;
+}
+
++ (FaceNet *)shared {
+    static FaceNet *shared = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        shared = [FaceNet new];
+    });
+    return shared;
 }
 
 @end

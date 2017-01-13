@@ -1,31 +1,35 @@
 //
-//  ViewController.m
+//  FNCameraViewController.m
 //  bnns
 //
-//  Created by Nate Parrott on 1/11/17.
+//  Created by Nate Parrott on 1/13/17.
 //  Copyright © 2017 Nate Parrott. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "FNCameraViewController.h"
 #import "FNCameraView.h"
 
-@interface ViewController ()
+@interface FNCameraViewController ()
 
 @property (nonatomic) FNCameraView *cameraView;
 
 @end
 
-@implementation ViewController
+@implementation FNCameraViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.cameraView = [FNCameraView new];
-    [self.view addSubview:self.cameraView];
+    [self.view insertSubview:self.cameraView atIndex:0];
 }
 
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
     self.cameraView.frame = self.view.bounds;
+}
+
+- (IBAction)dismiss:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end
