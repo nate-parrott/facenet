@@ -71,7 +71,7 @@
     NSInteger nPixels = pixels.width * pixels.height;
     for (NSInteger pixel=0; pixel<nPixels; pixel++) {
         for (NSInteger channel=0; channel<3; channel++) {
-            array[pixel*3 + channel] = bytes[pixel * 4 + channel] / 255.0;
+            array[pixel*3 + channel] = bytes[pixel * 4 + channel];
         }
     }
     return array;

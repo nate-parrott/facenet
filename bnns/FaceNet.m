@@ -296,9 +296,9 @@ typedef enum {
     // sqrt(sum(A[n]**2, 0 <= n < N) / N - m**2);
     double stddev = 0;
     for (NSInteger i=0; i<nElements; i++) {
-        stddev += pow(input[i], 2);
+        stddev += pow(input[i] - mean, 2);
     }
-    stddev = sqrt(stddev / nElements - mean * mean);
+    stddev = sqrt(stddev / nElements);
     float adjustedStddev = MAX(stddev, 1.0 / sqrt(nElements));
     for (NSInteger i=0; i<nElements; i++) {
         output[i] = (input[i] - mean) / adjustedStddev;
@@ -345,6 +345,11 @@ typedef enum {
         float *nextBuffer = (buffer == _buffer1) ? _buffer2 : _buffer1;
         [layer processInput:buffer output:nextBuffer];
         buffer = nextBuffer;
+        if ([layer isKindOfClass:[FNFullyConnectedLayer class]] || [layer isKindOfClass:[FNConvolutionalLayer class]] || [layer isKindOfClass:[FNPoolingLayer class]]) {
+            NSLog(@"%f", buffer[0]);
+        } else if (layer == self.layers.firstObject) {
+            NSLog(@"standardized: %f, %f, %f", buffer[0], buffer[1], buffer[2]);
+        }
     }
     return buffer;
 }
@@ -402,7 +407,7 @@ typedef enum {
     
     FNFullyConnectedLayer *fc3 = [[FNFullyConnectedLayer alloc] initFullyConnectedWithInputSize:256 outputSize:40 activation:FNActivationSigmoid weightName:@"fc3.w.256_40" biasName:@"fc3.b.40"];
     
-    FNLayerChain *chain = [[FNLayerChain alloc] initWithLayers:@[transpose0, standardization, conv0, pool0, conv1, pool1, conv2, pool2, conv3, pool3, transpose1, fc1, fc2, fc3] inputCount:64 * 64 * 3];
+    FNLayerChain *chain = [[FNLayerChain alloc] initWithLayers:@[standardization, transpose0, conv0, pool0, conv1, pool1, conv2, pool2, conv3, pool3, transpose1, fc1, fc2, fc3] inputCount:64 * 64 * 3];
     
     self.chain = chain;
     
@@ -490,10 +495,10 @@ typedef enum {
 }
 
 - (void)faceTest {
-    UIImage *face = [[UIImage imageNamed:@"congress"] fn_mainFace];
+    UIImage *face = [UIImage imageNamed:@"cropped"]; // [[UIImage imageNamed:@"congress"] fn_mainFace];
     NSDictionary *d = [self attributesForFace:face];
     for (NSString *key in d) {
-        NSLog(@"%@: %@", key, d[key]);
+        NSLog(@"%@: %f", key, round([d[key] floatValue]*10)/10);
     }
 }
 

@@ -20,7 +20,7 @@
     // Override point for customization after application launch.
     // [[FaceNet new] xorTest];
     // [[FaceNet new] convTest];
-    // [[FaceNet new] faceTest];
+    [[FaceNet new] faceTest];
     return YES;
 }
 
