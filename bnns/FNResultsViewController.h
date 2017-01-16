@@ -11,6 +11,6 @@
 
 @interface FNResultsViewController : UIViewController
 
-- (void)setFace:(CIFaceFeature *)face inImage:(UIImage *)image;
+- (void)setFace:(CGRect)face inImage:(UIImage *)image;
 
 @end

@@ -9,6 +9,7 @@
 #import "FNResultsViewController.h"
 #import "FaceNet.h"
 #import "UIImage+MainFace.h"
+#import "UIImage+OpenCVFaceDetection.h"
 
 @interface FNResultsViewController ()
 
@@ -18,9 +19,9 @@
 
 @implementation FNResultsViewController
 
-- (void)setFace:(CIFaceFeature *)face inImage:(UIImage *)image {
+- (void)setFace:(CGRect)face inImage:(UIImage *)image {
     [self loadViewIfNeeded];
-    NSDictionary *data = [[FaceNet shared] attributesForFace:[image fn_cropToFace:face]];
+    NSDictionary *data = [[FaceNet shared] attributesForFace:[image fn_cropToFaceRect:face]];
     NSMutableString *s = [NSMutableString new];
     for (NSString *key in data) {
         [s appendFormat:@"%@: %@\n", key, data[key]];

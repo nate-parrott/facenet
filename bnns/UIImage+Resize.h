@@ -11,5 +11,6 @@
 @interface UIImage (Resize)
 
 - (UIImage *)atSize:(CGSize)size;
+- (UIImage *)fn_resizedWithMaxDimension:(CGFloat)maxDimension;
 
 @end

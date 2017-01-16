@@ -19,4 +19,9 @@
     }];
 }
 
+- (UIImage *)fn_resizedWithMaxDimension:(CGFloat)maxDimension {
+    CGFloat scale = MIN(maxDimension / self.size.width, maxDimension / self.size.height);
+    return [self atSize:CGSizeMake(scale * self.size.width, scale * self.size.height)];
+}
+
 @end

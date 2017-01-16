@@ -42,6 +42,8 @@
 		5F7B493E1E26AF1200635DB0 /* xor.fc3.b.weight in Resources */ = {isa = PBXBuildFile; fileRef = 5F7B49381E26AF1200635DB0 /* xor.fc3.b.weight */; };
 		5F7B493F1E26AF1200635DB0 /* xor.fc3.w.weight in Resources */ = {isa = PBXBuildFile; fileRef = 5F7B49391E26AF1200635DB0 /* xor.fc3.w.weight */; };
 		5F8B00A61E2CD9790081A2F4 /* cropped.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F8B00A51E2CD9780081A2F4 /* cropped.png */; };
+		5F8B00A81E2D0F890081A2F4 /* haarcascade_frontalface_default.xml in Resources */ = {isa = PBXBuildFile; fileRef = 5F8B00A71E2D0F890081A2F4 /* haarcascade_frontalface_default.xml */; };
+		5F8B00AB1E2D0FA70081A2F4 /* UIImage+OpenCVFaceDetection.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5F8B00AA1E2D0FA70081A2F4 /* UIImage+OpenCVFaceDetection.mm */; };
 		5FCC6F971E273A3500973AB4 /* UIImage+PixelData.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FCC6F961E273A3500973AB4 /* UIImage+PixelData.m */; };
 		5FCC6FB71E27827F00973AB4 /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FCC6FB61E27827F00973AB4 /* UIImage+Resize.m */; };
 		5FCC6FB91E278CCB00973AB4 /* congress.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FCC6FB81E278CCB00973AB4 /* congress.png */; };
@@ -54,9 +56,13 @@
 		5FEC31261E29095B001503F6 /* FNFacePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FEC31251E29095B001503F6 /* FNFacePickerViewController.m */; };
 		5FEC31291E2909C7001503F6 /* FNResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FEC31281E2909C7001503F6 /* FNResultsViewController.m */; };
 		5FEC312C1E2913E8001503F6 /* FNCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FEC312B1E2913E8001503F6 /* FNCameraViewController.m */; };
+		838354A30392ADBB057EB8DE /* libPods-bnns.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 59343B84450D3C1BAA8DCEC6 /* libPods-bnns.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		06BCF655BB8B031CBF90A61E /* Pods-bnns.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bnns.debug.xcconfig"; path = "Pods/Target Support Files/Pods-bnns/Pods-bnns.debug.xcconfig"; sourceTree = "<group>"; };
+		52F22A22959AA2D8576259D7 /* Pods-bnns.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bnns.release.xcconfig"; path = "Pods/Target Support Files/Pods-bnns/Pods-bnns.release.xcconfig"; sourceTree = "<group>"; };
+		59343B84450D3C1BAA8DCEC6 /* libPods-bnns.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-bnns.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F1035561E2AD0E300D6ECF2 /* conv0.b.16.weight */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = conv0.b.16.weight; sourceTree = "<group>"; };
 		5F1035571E2AD0E300D6ECF2 /* conv0.w.5_5_3_16.weight */ = {isa = PBXFileReference; lastKnownFileType = file; path = conv0.w.5_5_3_16.weight; sourceTree = "<group>"; };
 		5F1035581E2AD0E300D6ECF2 /* conv1.b.32.weight */ = {isa = PBXFileReference; lastKnownFileType = file; path = conv1.b.32.weight; sourceTree = "<group>"; };
@@ -97,6 +103,9 @@
 		5F7B49381E26AF1200635DB0 /* xor.fc3.b.weight */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = xor.fc3.b.weight; sourceTree = "<group>"; };
 		5F7B49391E26AF1200635DB0 /* xor.fc3.w.weight */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = xor.fc3.w.weight; sourceTree = "<group>"; };
 		5F8B00A51E2CD9780081A2F4 /* cropped.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cropped.png; sourceTree = "<group>"; };
+		5F8B00A71E2D0F890081A2F4 /* haarcascade_frontalface_default.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = haarcascade_frontalface_default.xml; sourceTree = "<group>"; };
+		5F8B00A91E2D0FA70081A2F4 /* UIImage+OpenCVFaceDetection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+OpenCVFaceDetection.h"; sourceTree = "<group>"; };
+		5F8B00AA1E2D0FA70081A2F4 /* UIImage+OpenCVFaceDetection.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "UIImage+OpenCVFaceDetection.mm"; sourceTree = "<group>"; };
 		5FCC6F951E273A3500973AB4 /* UIImage+PixelData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+PixelData.h"; sourceTree = "<group>"; };
 		5FCC6F961E273A3500973AB4 /* UIImage+PixelData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+PixelData.m"; sourceTree = "<group>"; };
 		5FCC6FB51E27827F00973AB4 /* UIImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Resize.h"; sourceTree = "<group>"; };
@@ -127,17 +136,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				838354A30392ADBB057EB8DE /* libPods-bnns.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1B4D60BE553DEAF7E173BBFB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				59343B84450D3C1BAA8DCEC6 /* libPods-bnns.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		5F7B48A61E2552E700635DB0 = {
 			isa = PBXGroup;
 			children = (
 				5F7B48B11E2552E700635DB0 /* bnns */,
 				5F7B48B01E2552E700635DB0 /* Products */,
+				7237036F004B13226C384959 /* Pods */,
+				1B4D60BE553DEAF7E173BBFB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -159,8 +179,11 @@
 				5F7B48E51E25534000635DB0 /* example.png */,
 				5F7B48E71E25534A00635DB0 /* FaceNet.h */,
 				5F7B48E81E25534A00635DB0 /* FaceNet.m */,
+				5F8B00A71E2D0F890081A2F4 /* haarcascade_frontalface_default.xml */,
 				5FE7F8071E27A67B00A699CD /* UIImage+MainFace.h */,
 				5FE7F8081E27A67B00A699CD /* UIImage+MainFace.m */,
+				5F8B00A91E2D0FA70081A2F4 /* UIImage+OpenCVFaceDetection.h */,
+				5F8B00AA1E2D0FA70081A2F4 /* UIImage+OpenCVFaceDetection.mm */,
 				5FEC312A1E2913E8001503F6 /* FNCameraViewController.h */,
 				5FEC312B1E2913E8001503F6 /* FNCameraViewController.m */,
 				5FEC31241E29095B001503F6 /* FNFacePickerViewController.h */,
@@ -258,6 +281,15 @@
 			name = "Image utils";
 			sourceTree = "<group>";
 		};
+		7237036F004B13226C384959 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				06BCF655BB8B031CBF90A61E /* Pods-bnns.debug.xcconfig */,
+				52F22A22959AA2D8576259D7 /* Pods-bnns.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -265,9 +297,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5F7B48C61E2552E700635DB0 /* Build configuration list for PBXNativeTarget "bnns" */;
 			buildPhases = (
+				743B1B5C3810D84F2D562E55 /* [CP] Check Pods Manifest.lock */,
 				5F7B48AB1E2552E700635DB0 /* Sources */,
 				5F7B48AC1E2552E700635DB0 /* Frameworks */,
 				5F7B48AD1E2552E700635DB0 /* Resources */,
+				8FAC4CA98010C55ECADD5E26 /* [CP] Embed Pods Frameworks */,
+				C45626692ADCF73459AA96B9 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -342,6 +377,7 @@
 				5F7B492F1E26AF0600635DB0 /* conv.conv1.w.weight in Resources */,
 				5F1035681E2AD0E300D6ECF2 /* conv2.b.64.weight in Resources */,
 				5F7B49331E26AF0600635DB0 /* conv.fc3.w.weight in Resources */,
+				5F8B00A81E2D0F890081A2F4 /* haarcascade_frontalface_default.xml in Resources */,
 				5F7B48BF1E2552E700635DB0 /* Assets.xcassets in Resources */,
 				5F7B48BD1E2552E700635DB0 /* Main.storyboard in Resources */,
 				5F10356E1E2AD0E300D6ECF2 /* fc2.b.256.weight in Resources */,
@@ -353,6 +389,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		743B1B5C3810D84F2D562E55 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		8FAC4CA98010C55ECADD5E26 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-bnns/Pods-bnns-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C45626692ADCF73459AA96B9 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-bnns/Pods-bnns-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		5F7B48AB1E2552E700635DB0 /* Sources */ = {
@@ -372,6 +456,7 @@
 				5FCC6FB71E27827F00973AB4 /* UIImage+Resize.m in Sources */,
 				5FCC6FC11E278CFC00973AB4 /* CIFeature+CorrectedBounds.m in Sources */,
 				5FCC6FC51E278D3600973AB4 /* UIImage+Normalization.m in Sources */,
+				5F8B00AB1E2D0FA70081A2F4 /* UIImage+OpenCVFaceDetection.mm in Sources */,
 				5FEC31291E2909C7001503F6 /* FNResultsViewController.m in Sources */,
 				5FEC312C1E2913E8001503F6 /* FNCameraViewController.m in Sources */,
 			);
@@ -491,6 +576,7 @@
 		};
 		5F7B48C71E2552E700635DB0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 06BCF655BB8B031CBF90A61E /* Pods-bnns.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = VPN8ZW6EAC;
@@ -503,6 +589,7 @@
 		};
 		5F7B48C81E2552E700635DB0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 52F22A22959AA2D8576259D7 /* Pods-bnns.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = VPN8ZW6EAC;
